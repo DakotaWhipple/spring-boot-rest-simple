@@ -1,6 +1,8 @@
 package io.dakotawhipple.employeeservices;
 
+import lombok.Builder;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,8 @@ public class Employee {
     private String middleInitial;
     private String dateOfBirth;
     private String dateOfEmployment;
-    private Boolean isActive;
+    @Builder.Default
+    private boolean isActive = true;
 
     public Employee() {}
 
@@ -24,14 +27,15 @@ public class Employee {
                     String firstName,
                     String middleInitial,
                     String dateOfBirth,
-                    String dateOfEmployment) {
+                    String dateOfEmployment,
+                    boolean isActive) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleInitial = middleInitial;
         this.dateOfBirth = dateOfBirth;
         this.dateOfEmployment = dateOfEmployment;
-        this.isActive = true;
+        this.isActive = isActive;
     }
 }
 

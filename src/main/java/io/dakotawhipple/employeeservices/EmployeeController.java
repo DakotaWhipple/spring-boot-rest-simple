@@ -41,7 +41,7 @@ public class EmployeeController {
                     employee.setMiddleInitial(newEmployee.getMiddleInitial());
                     employee.setDateOfBirth(newEmployee.getDateOfBirth());
                     employee.setDateOfEmployment(newEmployee.getDateOfEmployment());
-                    employee.setIsActive(newEmployee.getIsActive());
+                    employee.setActive(newEmployee.isActive());
                     return repo.save(employee);
                 })
                 .orElseGet(() -> {
