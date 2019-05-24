@@ -24,15 +24,14 @@ public class Employee {
                     String firstName,
                     String middleInitial,
                     String dateOfBirth,
-                    String dateOfEmployment,
-                    Boolean isActive ) {
+                    String dateOfEmployment) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleInitial = middleInitial;
         this.dateOfBirth = dateOfBirth;
         this.dateOfEmployment = dateOfEmployment;
-        this.isActive = isActive;
+        this.isActive = true;
     }
 }
 
