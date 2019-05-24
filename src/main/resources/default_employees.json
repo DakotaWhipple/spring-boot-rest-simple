@@ -1,1 +1,4 @@
-{}
+[
+  {"id":1,"lastName":"Wilson","firstName":"Tim","middleInitial":"J","dateOfBirth":"5/10/90","dateOfEmployment":"5/23/19","isActive":true},
+  {"id":2,"lastName":"Milson","firstName":"Jim","middleInitial":"R","dateOfBirth":"4/11/91","dateOfEmployment":"5/23/19","isActive":true}
+]
