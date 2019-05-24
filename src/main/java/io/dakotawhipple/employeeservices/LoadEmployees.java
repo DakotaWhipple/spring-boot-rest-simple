@@ -20,7 +20,6 @@ public class LoadEmployees {
         return args -> {
             try {
                 Employee[] defaultEmployees = getDefaultEmployees();
-                log.info("Found default employees:" + Arrays.toString(defaultEmployees));
                 log.info("Preloading " + repo.saveAll(Arrays.asList(defaultEmployees)));
             } catch(FileNotFoundException e) {
                 log.error("Unable to load default employees.");
