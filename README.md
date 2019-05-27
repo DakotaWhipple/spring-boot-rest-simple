@@ -1,3 +1,6 @@
+## Getting started
+1. cd into root of project and run `./gradlew build`
+2. `java -jar build/libs/employee-services-0.0.1-SNAPSHOT.jar`
 ## Usage
 To call api endpoints, add username and password to request. Api uses cookies for authentication.
 ### Login

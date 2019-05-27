@@ -6,9 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Arrays;
 
 @Configuration
@@ -30,17 +28,23 @@ public class LoadEmployees {
     //List<Employee> getDefaultEmployees() {
     Employee[] getDefaultEmployees() throws FileNotFoundException {
         String fileLocation = "default_employees.json";
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        Employee[] defaultEmployees;
+        ClassLoader classLoader = getClass().getClassLoader();
 
-        File employeesFile;
         try {
-            employeesFile = new File(classLoader.getResource(fileLocation).getFile());
+            // jar
+            InputStream in = classLoader.getResourceAsStream("/" + fileLocation);
+
+            // ide
+            if(in == null) {
+                in = classLoader.getResourceAsStream(fileLocation);
+            }
+
+            BufferedReader fileReader = new BufferedReader(new InputStreamReader(in));
+            defaultEmployees = (new Gson()).fromJson(fileReader, Employee[].class);
         } catch(NullPointerException e) {
             throw new FileNotFoundException("Could not find " + fileLocation + " in /resources.");
         }
-
-        Gson gson = new Gson();
-        Employee[] defaultEmployees = gson.fromJson(new FileReader(employeesFile), Employee[].class);
 
         return defaultEmployees;
     }
