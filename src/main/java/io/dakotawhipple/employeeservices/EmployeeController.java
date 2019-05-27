@@ -3,6 +3,7 @@ package io.dakotawhipple.employeeservices;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class EmployeeController {
@@ -16,7 +17,7 @@ public class EmployeeController {
     // Aggregate root
     @GetMapping("/employees")
     List<Employee> all() {
-        return repo.findAll();
+        return repo.findAll().stream().filter(Employee::isActive).collect(Collectors.toList());
     }
 
     @PostMapping("/employees")
@@ -27,13 +28,12 @@ public class EmployeeController {
     // Single item
     @GetMapping("/employees/{id}")
     Employee one(@PathVariable Long id) {
-        return repo.findById(id)
+        return repo.findById(id).filter(Employee::isActive)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
     @PutMapping("/employees/{id}")
     Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
-
         return repo.findById(id)
                 .map(employee -> {
                     employee.setLastName(newEmployee.getLastName());
