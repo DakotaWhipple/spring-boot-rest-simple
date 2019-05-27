@@ -52,6 +52,9 @@ public class EmployeeController {
 
     @DeleteMapping("/employees/{id}")
     void deleteEmployee(@PathVariable Long id) {
-        repo.deleteById(id);
+        repo.findById(id).map( employee -> {
+            employee.setActive(false);
+            return repo.save(employee);
+        });
     }
 }
