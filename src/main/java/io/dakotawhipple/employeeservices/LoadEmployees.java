@@ -12,6 +12,7 @@ import java.util.Arrays;
 @Configuration
 @Slf4j
 public class LoadEmployees {
+    private static final String EMPLOYEES_FILE = "default_employees.json";
 
     @Bean
     CommandLineRunner initDatabase(EmployeeRepository repo) {
@@ -26,26 +27,30 @@ public class LoadEmployees {
     }
 
     //List<Employee> getDefaultEmployees() {
-    Employee[] getDefaultEmployees() throws FileNotFoundException {
-        String fileLocation = "default_employees.json";
+    private Employee[] getDefaultEmployees() throws FileNotFoundException {
         Employee[] defaultEmployees;
-        ClassLoader classLoader = getClass().getClassLoader();
 
         try {
-            // jar
-            InputStream in = classLoader.getResourceAsStream("/" + fileLocation);
-
-            // ide
-            if(in == null) {
-                in = classLoader.getResourceAsStream(fileLocation);
-            }
-
-            BufferedReader fileReader = new BufferedReader(new InputStreamReader(in));
+            InputStream fileStream = getEmployeeFileStream();
+            BufferedReader fileReader = new BufferedReader(new InputStreamReader(fileStream));
             defaultEmployees = (new Gson()).fromJson(fileReader, Employee[].class);
         } catch(NullPointerException e) {
-            throw new FileNotFoundException("Could not find " + fileLocation + " in /resources.");
+            throw new FileNotFoundException("Could not find " + EMPLOYEES_FILE + " in /resources.");
         }
 
         return defaultEmployees;
+    }
+
+    private InputStream getEmployeeFileStream() {
+        ClassLoader classLoader = getClass().getClassLoader();
+         // jar
+        InputStream in = classLoader.getResourceAsStream("/" + EMPLOYEES_FILE);
+
+        // ide
+        if(in == null) {
+            in = classLoader.getResourceAsStream(EMPLOYEES_FILE);
+        }
+
+        return in;
     }
 }
