@@ -18,9 +18,6 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 @ComponentScan("io.dakotawhipple.employeeservices.security")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowire
-//    private CustomAccessDeniedHandler accessDeniedHandler;
-
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
@@ -51,7 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**").authenticated()
-//                .antMatchers("/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .successHandler(mySuccessHandler)
