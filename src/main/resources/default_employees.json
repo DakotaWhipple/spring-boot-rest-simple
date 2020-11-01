@@ -1,4 +1,4 @@
 [
-  {"id":1,"lastName":"Wilson","firstName":"Tim","middleInitial":"J","dateOfBirth":"5/10/90","address":"124 Coral St, Bikini Bottom, Atlantic Ocean","dateOfEmployment":"5/23/19"},
-  {"id":2,"lastName":"Milson","firstName":"Jim","middleInitial":"R","dateOfBirth":"4/11/91","address": "122 Conch St, Bikini Bottom, Atlantic Ocean","dateOfEmployment":"5/23/19"}
+  {"id":1,"lastName":"Wilson","firstName":"Tim","middleInitial":"J","affix":"sir",dateOfBirth":"05/10/1990","address":"124 Coral St, Bikini Bottom, Atlantic Ocean","dateOfEmployment":"5/23/19"},
+  {"id":2,"lastName":"Milson","firstName":"Jim","middleInitial":"R","dateOfBirth":"4/11/1991","address": "122 Conch St, Bikini Bottom, Atlantic Ocean","dateOfEmployment":"5/23/19"}
 ]

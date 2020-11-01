@@ -4,21 +4,23 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Entity
 public class Employee {
     private @Id @GeneratedValue Long id;
+    private String affix;
     private String lastName;
     private String firstName;
     private String middleInitial;
-    private String dateOfBirth;
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
     private String address;
-    private String dateOfEmployment;
+    @Temporal(TemporalType.DATE)
+    private Date dateOfEmployment;
     @Builder.Default
     private boolean isActive = true;
 
@@ -27,11 +29,12 @@ public class Employee {
     public Employee(String lastName,
                     String firstName,
                     String middleInitial,
-                    String dateOfBirth,
+                    Date dateOfBirth,
                     String address,
-                    String dateOfEmployment,
+                    Date dateOfEmployment,
                     boolean isActive) {
         this.id = id;
+        this.affix = affix;
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleInitial = middleInitial;
