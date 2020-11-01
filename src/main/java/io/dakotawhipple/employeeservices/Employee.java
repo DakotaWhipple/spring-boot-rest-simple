@@ -16,6 +16,7 @@ public class Employee {
     private String lastName;
     private String firstName;
     private String middleInitial;
+    private String affix;
     private String dateOfBirth;
     private String address;
     private String dateOfEmployment;
@@ -27,6 +28,7 @@ public class Employee {
     public Employee(String lastName,
                     String firstName,
                     String middleInitial,
+                    String affix,
                     String dateOfBirth,
                     String address,
                     String dateOfEmployment,
