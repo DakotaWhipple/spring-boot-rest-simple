@@ -17,6 +17,7 @@ public class Employee {
     private String firstName;
     private String middleInitial;
     private String dateOfBirth;
+    private String address;
     private String dateOfEmployment;
     @Builder.Default
     private boolean isActive = true;
@@ -27,6 +28,7 @@ public class Employee {
                     String firstName,
                     String middleInitial,
                     String dateOfBirth,
+                    String address,
                     String dateOfEmployment,
                     boolean isActive) {
         this.id = id;
@@ -34,6 +36,7 @@ public class Employee {
         this.firstName = firstName;
         this.middleInitial = middleInitial;
         this.dateOfBirth = dateOfBirth;
+        this.address = address;
         this.dateOfEmployment = dateOfEmployment;
         this.isActive = isActive;
     }
