@@ -1,7 +1,6 @@
 package io.dakotawhipple.employeeservices;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -34,9 +33,7 @@ public class LoadEmployees {
         try {
             InputStream fileStream = getEmployeeFileStream();
             BufferedReader fileReader = new BufferedReader(new InputStreamReader(fileStream));
-            Gson gson = new GsonBuilder()
-                    .setDateFormat("dd/MM/yyyy").create();
-            defaultEmployees = (gson).fromJson(fileReader, Employee[].class);
+            defaultEmployees = (new Gson()).fromJson(fileReader, Employee[].class);
         } catch(NullPointerException e) {
             throw new FileNotFoundException("Could not find " + EMPLOYEES_FILE + " in /resources.");
         }
