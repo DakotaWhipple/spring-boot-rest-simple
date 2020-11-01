@@ -12,6 +12,7 @@ import java.util.Date;
 @Entity
 public class Employee {
     private @Id @GeneratedValue Long id;
+    private String affix;
     private String lastName;
     private String firstName;
     private String middleInitial;
@@ -33,6 +34,7 @@ public class Employee {
                     Date dateOfEmployment,
                     boolean isActive) {
         this.id = id;
+        this.affix = affix;
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleInitial = middleInitial;
